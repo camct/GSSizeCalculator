@@ -55,8 +55,17 @@ function toggleUnit() {
     // Reset the final length display
     document.getElementById('finalLength').value = '0';
     
-    document.getElementById('feetInchInputs').style.display = isInchMode ? 'block' : 'none';
-    document.getElementById('cmInput').style.display = isInchMode ? 'none' : 'block';
+    // Maintain flex layout when toggling display
+    const feetInchInputs = document.getElementById('feetInchInputs');
+    const cmInput = document.getElementById('cmInput');
+    
+    if (isInchMode) {
+        feetInchInputs.style.display = 'flex';
+        cmInput.style.display = 'none';
+    } else {
+        feetInchInputs.style.display = 'none';
+        cmInput.style.display = 'flex';
+    }
     
     // Update container background
     document.getElementById('sizeCalcContainer').style.background = isInchMode ? 'darkgreen' : 'lightgreen';
