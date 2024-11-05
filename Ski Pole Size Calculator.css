@@ -34,12 +34,18 @@
 }
 
 .ski-pole-calculator .heightInputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
     margin-top: 0.5em;
     margin-left: 0;
 }
 
 .ski-pole-calculator .height {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
 }
 
 .ski-pole-calculator label {
