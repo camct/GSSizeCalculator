@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
+            /* Import Raleway font */
+            @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
             .ski-pole-calculator {
                 width: 100%;
                 position: relative;
@@ -29,7 +32,7 @@
                 max-width: 860px;
                 margin: 0 auto;
                 border: 8px solid #5a371d;
-                font-family: "Palatino", serif;
+                font-family: 'Raleway', sans-serif;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 background: darkgreen;
                 color: white;
@@ -366,6 +369,140 @@
                     font-size: 1.8em;
                 }
             }
+
+            .product-card {
+                color: black;  /* Maintain text color */
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                transition: transform 0.2s, box-shadow 0.2s;
+                background: white;
+                height: 180px !important;  /* Fixed height */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                font-family: 'Raleway', sans-serif;
+                width: 100%;
+                height: 100%;
+                padding: 0.5rem !important;  /* Consistent padding */
+                text-align: center !important;
+            }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            .product-card h3 {
+                color: #000;
+                font-size: clamp(0.5rem, 1vw, 0.9rem);  /* Reduced size range */
+                margin-bottom: 0.5em;
+                font-weight: 500;
+                line-height: 1.2;
+            }
+
+            .product-card img {
+                height: 100px !important;  /* Fixed height */
+                width: auto !important;    /* Maintain aspect ratio */
+                object-fit: contain !important;
+                margin-top: auto;
+                max-width: 100% !important;  /* Prevent overflow */
+            }
+
+            /* Additional control for very small screens */
+            @media (max-width: 480px) {
+                .product-card img {
+                    height: 80px !important;  /* Slightly smaller on mobile */
+                }
+            }
+
+            @media (max-width: 350px) {
+                .product-card img {
+                    height: 70px !important;  /* Even smaller on very small screens */
+                }
+            }
+
+            /* Remove the media query that changes layout */
+            /* Instead, add responsive adjustments */
+            @media (max-width: 768px) {
+                .product-card {
+                    padding: 0.5em;  /* Reduce padding on small screens */
+                }
+                
+                .product-card h3 {
+                    margin-bottom: 0.3em;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .product-card {
+                    padding: 0.3em;  /* Further reduce padding on very small screens */
+                }
+            }
+
+            /* Ensure headings also use Raleway */
+            .ski-pole-calculator h2,
+            .product-card .product-title {
+                font-family: 'Raleway', sans-serif;
+                /* ... rest of your existing styles ... */
+            }
+
+            .productDisplayHeader {
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(1rem, 2vw, 1.5rem);  /* Responsive, smaller font size */
+                text-align: center;
+                margin-bottom: 1em;
+                color: #000;
+                font-weight: 500;  /* Medium weight */
+            }
+
+            /* Media queries for further adjustments */
+            @media (max-width: 768px) {
+                .productDisplayHeader {
+                    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+                    margin-bottom: 0.8em;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .productDisplayHeader {
+                    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+                    margin-bottom: 0.6em;
+                }
+            }
+
+            .product-card .product-title {
+                font-size: 0.8rem !important;
+                text-align: center !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;  /* Force block display */
+                position: relative !important;  /* Reset any positioning */
+                left: 0 !important;  /* Reset any offset */
+            }
+
+            @media (max-width: 768px) {
+                .product-card .product-title {
+                    font-size: 0.6rem !important;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .product-card .product-title {
+                    font-size: 0.5rem !important;
+                }
+            }
+
+            @media (max-width: 350px) {
+                .product-card .product-title {
+                    font-size: 0.45rem !important;
+                    width: 100% !important;
+                    left: 0 !important;
+                    transform: none !important;  /* Remove any transforms */
+                }
+            }
         </style>
     </head>
     <body>
@@ -417,7 +554,55 @@
             </div>
             <div id="message" style="display: none;">
                 <p>Please enter a valid height.</p>
-                <a id="customizeLink" style='display: none;' href="https://www.grasssticks.com/shop#!/Original-Custom-Grass-Sticks/p/55001151/category=23444012">Customize your </a>
+            </div>
+            <div id="productDisplay">
+                <div id="productDisplayHeader">
+                    <h4 class="productDisplayHeader">Click on a product to customize your ski poles</h4>
+                </div>
+                <div class="container-fluid my-4">
+                    <div class="row row-cols-5 g-2 justify-content-around align-items-stretch">
+                        <div class="col">
+                            <a href="https://www.grasssticks.com/shop#!/Original-Custom-Grass-Sticks/p/55001151/category=23444012" class="text-decoration-none">
+                                <div class="product-card h-100 p-3 text-center">
+                                    <h3 class="small fs-6 product-title">Original Custom</h3>
+                                    <img src="https://i.ibb.co/wMTW2kB/og-Custom-Pic.jpg" alt="Original Custom Sticks" class="img-fluid">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.grasssticks.com/shop#!/Hiking-Sticks/p/570262509/category=23444012" class="text-decoration-none">
+                                <div class="product-card h-100 p-3 text-center">
+                                    <h3 class="small fs-6 product-title">Hiking Sticks</h3>
+                                    <img src="https://i.ibb.co/fCQvqvp/hiking-Sticks-Pic.jpg" alt="Hiking Sticks" class="img-fluid">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.grasssticks.com/shop#!/Touring-Sticks/p/74102380/category=23444012" class="text-decoration-none">
+                                <div class="product-card h-100 p-3 text-center">
+                                    <h3 class="small fs-6 product-title">Touring Sticks</h3>
+                                    <img src="https://i.ibb.co/jhvL1nZ/touring-Sticks-Pic.jpg" alt="Touring Sticks" class="img-fluid">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.grasssticks.com/shop#!/Kids-Sticks-Grow-with-your-poles-program/p/94782479/category=23444012" class="text-decoration-none">
+                                <div class="product-card h-100 p-3 text-center">
+                                    <h3 class="small fs-6 product-title">Kids Sticks</h3>
+                                    <img src="https://i.ibb.co/wwHMdMJ/kids-Sticks-Pic.jpg" alt="Kids Sticks" class="img-fluid">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.grasssticks.com/shop#!/Ringtail-Torched-Sticks/p/506210440/category=23444012" class="text-decoration-none">
+                                <div class="product-card h-100 p-3 text-center">
+                                    <h3 class="small fs-6 product-title">Ringtail Torched</h3>
+                                    <img src="https://i.ibb.co/HB3Nn6B/RTStick-Pic.jpg" alt="Ringtail Torched Sticks" class="img-fluid">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -426,52 +611,18 @@
 
             window.onload = function() {
                 document.getElementById('finalLength').value = '0';
-                document.getElementById('customizeLink').style.display = 'none';
                 document.getElementById('message').style.display = 'none';
                 document.getElementById('feetInput').value = '';
                 document.getElementById('inchesInput').value = '';
                 document.getElementById('heightCm').value = '';
             }
 
-            function updateCustomizeLink() {
-                // Get the actual referring page
-                const referrer = document.referrer;
-                const link = document.querySelector('#message a');
-                link.style.display = 'block';
-                
-                // Check which page the user came from
-                if (referrer.includes('Original-Custom-Grass-Sticks')) {
-                    link.href = 'https://www.grasssticks.com/shop#!/Original-Custom-Grass-Sticks/p/55001151/category=23444012';
-                    link.textContent = 'Continue customizing your Original Custom Grass Sticks';
-                } 
-                else if (referrer.includes('Kids-Sticks')) {
-                    link.href = 'https://www.grasssticks.com/shop#!/Kids-Sticks-Grow-with-your-poles-program/p/94782479/category=23444012';
-                    link.textContent = 'Continue customizing your Kids Sticks';
-                }
-                else if (referrer.includes('Ringtail-Torched-Sticks')) {
-                    link.href = 'https://www.grasssticks.com/shop#!/Ringtail-Torched-Sticks/p/506210440/category=23444012';
-                    link.textContent = 'Continue customizing your Ringtail Torched Sticks';
-                }
-                else if (referrer.includes('Touring-Sticks')) {
-                    link.href = 'https://www.grasssticks.com/shop#!/Touring-Sticks/p/74102380/category=23444012';
-                    link.textContent = 'Continue customizing your Touring Sticks';
-                }
-                else if (referrer.includes('Hiking-Sticks')) {
-                    link.href = 'https://www.grasssticks.com/shop#!/Hiking-Sticks/p/570262509/category=23444012';
-                    link.textContent = 'Continue customizing your Hiking Sticks';
-                }
-                else {
-                    link.href = 'https://www.grasssticks.com/shop#!/Grass-Sticks-Ski-Poles/c/23444012';
-                    link.textContent = 'Customize my own ski poles';
-                }
-            }
 
             function toggleUnit() {
                 isInchMode = !document.getElementById('unitToggle').checked;
                 
                 // Hide message when toggling
                 document.getElementById('message').style.display = 'none';
-                document.getElementById('customizeLink').style.display = 'none';
                 
                 // Update unit display
                 document.getElementById('unitDisplay').textContent = isInchMode ? 'in' : 'cm';
@@ -524,11 +675,7 @@
                 // Update arrow color
                 const arrow = document.querySelector('.arrow');
                 arrow.style.color = isInchMode ? 'lightgreen' : 'darkgreen';
-                
-                // Update button colors to match container
-                const customizeLink = document.querySelector('#message a');
-                customizeLink.style.backgroundColor = isInchMode ? 'darkgreen' : 'lightgreen';
-                customizeLink.style.color = isInchMode ? 'white' : 'black';
+            
             }
 
             function calculate() {
@@ -539,7 +686,6 @@
                     if (feet === '' && inches === '') {
                         document.getElementById('message').style.display = 'none';
                         document.getElementById('finalLength').value = '0';
-                        document.getElementById('customizeLink').style.display = 'none';
                         return;
                     }
 
@@ -574,7 +720,6 @@
                     if (heightCm === '') {
                         document.getElementById('message').style.display = 'none';
                         document.getElementById('finalLength').value = '0';
-                        document.getElementById('customizeLink').style.display = 'none';
                         return;
                     }
 
@@ -602,13 +747,11 @@
 
             function calculateInches(poleSize) {
                 const length = Math.round(poleSize);
-                updateCustomizeLink();
                 document.getElementById("finalLength").value = length;
             }
 
             function calculateCm(poleSize) {
                 const lengthCm = Math.round(poleSize * 2.54);
-                updateCustomizeLink();
                 document.getElementById("finalLength").value = lengthCm;
             }
 
